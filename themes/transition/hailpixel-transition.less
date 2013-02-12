@@ -1,0 +1,69 @@
+.transform(...) {
+  -webkit-transform: @arguments;
+  -moz-transform: @arguments;
+  -o-transform: @arguments;
+  -ms-transform: @arguments;
+  transform: @arguments;
+}
+
+.csstransitions.csstransforms {
+  overflow-x:hidden;
+  
+  .deck-container > .slide {
+    
+  }
+  
+  .deck-container:not(.deck-menu) {
+    > .slide {
+      position:absolute;
+      top:0;
+      left:0;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      width:100%;
+      padding:0 100px;
+
+      .slide {
+        position:relative;
+        left:0;
+        top:0;
+        -webkit-transition:-webkit-transform 500ms ease-in-out, opacity 500ms ease-in-out;
+        -moz-transition:-moz-transform 500ms ease-in-out, opacity 500ms ease-in-out;
+        -ms-transition:-ms-transform 500ms ease-in-out, opacity 500ms ease-in-out;
+        -o-transition:-o-transform 500ms ease-in-out, opacity 500ms ease-in-out;
+        transition:-webkit-transform 500ms ease-in-out, opacity 500ms ease-in-out;
+      }
+
+      .deck-next, .deck-after {
+        opacity: 0;
+      }
+    }
+
+    > .deck-previous {
+      .transform(~'translate3d(-200%, 0, 0)');
+    }
+
+    > .deck-before {
+      .transform(~'translate3d(-400%, 0, 0)');
+    }
+
+    > .deck-next {
+      .transform(~'translate3d(200%, 0, 0)');
+    }
+
+    > .deck-after {
+      .transform(~'translate3d(400%, 0, 0)');
+    }
+    
+    > .deck-before, > .deck-previous {
+      .slide {
+        visibility:visible;
+      }
+    }
+
+    > .deck-child-current {
+      .transform(none);
+    }
+  }
+}
